@@ -1,0 +1,132 @@
+# Markdown files (documentation)
+*.md
+
+# Backend - Python
+__pycache__/
+*.py[cod]
+backend/.env
+backend/.env.local
+backend/.env.*.local
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/pip-wheel-metadata/
+backend/share/python-wheels/
+backend/*.egg-info/
+backend/.installed.cfg
+backend/*.egg
+backend/MANIFEST
+backend/venv/
+backend/ENV/
+backend/env/
+backend/.venv
+backend/env.bak/
+backend/venv.bak/
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/site/
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+backend/.pyre/
+backend/__pycache__/
+backend/*.pyc
+backend/temp/
+backend/tmp/
+
+# Frontend - Node.js
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+frontend/dist/
+frontend/build/
+frontend/.env.local
+frontend/.env.*.local
+frontend/.env
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.DS_Store
+frontend/.env.production.local
+frontend/.vscode/
+frontend/.idea/
+frontend/*.swp
+frontend/*.swo
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*~
+.DS_Store
+Thumbs.db
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime
+*.env.example
+.env
+.env.local
+.env.*.local
+*.pid
+*.seed
+*.pid.lock
+
+# Development
+.venv
+venv/
+ENV/
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Test files (optional - keep test files if needed for CI/CD)
+# test_api.py
+# run_agent_eval.py
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+*.md

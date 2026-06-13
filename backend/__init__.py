@@ -1,0 +1,1 @@
+# FastAPI + Gemini client initialization
