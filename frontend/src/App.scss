@@ -78,7 +78,7 @@ body,
 
 .app-kicker {
   margin: 0;
-  font-size: 0.68rem;
+  font-size: 0.56rem;
   font-weight: 800;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -105,7 +105,7 @@ body,
   gap: 8px;
   border-radius: 999px;
   padding: 8px 12px;
-  font-size: 0.78rem;
+  font-size: 0.66rem;
   font-weight: 700;
   border: 1px solid transparent;
   white-space: nowrap;
@@ -159,6 +159,11 @@ body,
   box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.12);
 }
 
+.app-button--compact {
+  padding: 8px 12px;
+  font-size: 0.66rem;
+}
+
 .app-button--primary {
   color: #fff;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -194,6 +199,12 @@ body,
 .app-sidebar {
   display: grid;
   gap: 22px;
+}
+
+.app-conversation-column {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
 }
 
 .app-panel,
@@ -245,7 +256,15 @@ body,
 .app-upload__eyebrow,
 .app-summary__eyebrow,
 .app-summary__section-note,
-.app-missing__label,
+.app-missing__label {
+  margin: 0;
+  font-size: 0.60rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .app-prompts__label,
 .app-confidence__header,
 .app-message__meta-label {
@@ -285,6 +304,7 @@ body,
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.9));
   transition: border-color 160ms ease, transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  cursor: pointer;
 }
 
 .app-upload__dropzone:hover,
@@ -352,7 +372,7 @@ body,
 
 .app-summary__stat-label {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.60rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -361,7 +381,7 @@ body,
 
 .app-summary__stat-value {
   margin: 6px 0 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--text);
 }
@@ -379,7 +399,7 @@ body,
   align-items: center;
   gap: 8px;
   margin: 0 0 10px;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 800;
 }
 
@@ -418,6 +438,7 @@ body,
   background: #fff;
   color: #334155;
   border: 1px solid var(--border);
+  font-size: 0.68rem;
 }
 
 .app-summary__pill--indigo {
@@ -471,6 +492,7 @@ body,
 
 .app-console {
   display: flex;
+  width: 100%;
   flex-direction: column;
   min-height: 0;
   height: 100%;
@@ -725,6 +747,7 @@ body,
 }
 
 .app-message--assistant .app-message__card {
+  width: 100%;
   max-width: 100%;
 }
 
@@ -787,6 +810,134 @@ body,
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.app-evaluation {
+  display: grid;
+  gap: 14px;
+}
+
+.app-evaluation__section {
+  display: grid;
+  gap: 10px;
+}
+
+.app-evaluation__title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.app-evaluation__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.app-evaluation__card {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(248, 250, 255, 0.92);
+  border: 1px solid rgba(79, 70, 229, 0.12);
+}
+
+.app-evaluation__label {
+  margin: 0 0 8px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.app-evaluation__list,
+.app-career-panel__reasons {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.app-career-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.app-career-panel__header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.app-career-panel__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+  box-shadow: 0 16px 34px rgba(14, 165, 233, 0.16);
+  flex: 0 0 auto;
+}
+
+.app-career-panel__title {
+  margin: 4px 0 6px;
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+
+.app-career-panel__copy,
+.app-career-panel__empty {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.app-career-panel__roles {
+  display: grid;
+  gap: 14px;
+}
+
+.app-career-panel__role {
+  display: grid;
+  gap: 8px;
+}
+
+.app-career-panel__role-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.app-career-panel__role-name {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.app-career-panel__role-percent {
+  font-size: 0.70rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.app-career-panel__track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  overflow: hidden;
+}
+
+.app-career-panel__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.16);
 }
 
 .app-confidence {

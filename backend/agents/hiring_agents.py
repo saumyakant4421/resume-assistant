@@ -33,8 +33,7 @@ class HiringAgent:
         self.client_source = None
 
         if self.groq_key:
-            # GROQ configured; mark as groq client available. Concrete HTTP/SDK calls
-            # will be implemented when endpoint/SDK details are provided.
+            # GROQ configured; 
             self.client = {"type": "groq", "api_key": self.groq_key}
             self.client_source = "groq"
         elif self.api_key:
@@ -218,6 +217,10 @@ class HiringAgent:
         scoring_result = self.candidate_scorer.run(resume_data)
         self._log_internal_decision("EVALUATE", "CandidateScorer", "Candidate evaluation requested")
 
+        score_reasons = scoring_result.get("score_reasons", {})
+        role_fits = scoring_result.get("role_fits", [])
+        top_role = scoring_result.get("top_recommendation", "")
+
         answer = (
             "Candidate Evaluation:\n"
             f"Overall Score: {scoring_result['overall']}/10 ({scoring_result['rating']})\n"
@@ -227,7 +230,8 @@ class HiringAgent:
             f"Resume Completeness: {scoring_result['completeness_score']}/10\n"
             f"Skills: {scoring_result['scores']['technical_skills']['count']} | "
             f"Experience: {scoring_result['scores']['experience']['count']} | "
-            f"Education: {scoring_result['scores']['education']['count']}"
+            f"Education: {scoring_result['scores']['education']['count']}\n\n"
+            f"Best-fit career path: {top_role or 'Not enough data to recommend'}"
         )
 
         return {
@@ -235,6 +239,11 @@ class HiringAgent:
             "confidence": 0.95,
             "source": "resume",
             "missing_data": [],
+            "evaluation": {
+                "score_reasons": score_reasons,
+                "role_fits": role_fits,
+                "top_recommendation": top_role,
+            },
         }
 
     def _handle_completeness_query(self, query: str, resume_data: Dict[str, Any]) -> Dict[str, Any]:

@@ -1,5 +1,17 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
+
+
+class EvaluationRoleFit(BaseModel):
+    role: str = Field(..., description="Recommended career role")
+    fit_percent: float = Field(..., ge=0.0, le=100.0, description="Role fit percentage")
+    reasons: List[str] = Field(default_factory=list, description="Why this role fits")
+
+
+class EvaluationInsights(BaseModel):
+    score_reasons: dict[str, List[str]] = Field(default_factory=dict, description="Reasoning behind each score")
+    role_fits: List[EvaluationRoleFit] = Field(default_factory=list, description="Recommended career roles")
+    top_recommendation: str = Field(default="", description="Highest-fit career role")
 
 
 class ResumeData(BaseModel):
@@ -33,6 +45,7 @@ class AgentResponse(BaseModel):
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence score 0-1")
     source: str = Field(..., description="Source: 'resume' or 'inference'")
     missing_data: List[str] = Field(default_factory=list, description="Missing data fields")
+    evaluation: Optional[EvaluationInsights] = Field(default=None, description="Detailed evaluation insights")
     
     class Config:
         json_schema_extra = {

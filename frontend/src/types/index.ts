@@ -15,6 +15,19 @@ export interface AgentResponse {
   confidence: number;
   source: "resume" | "inference";
   missing_data: string[];
+  evaluation?: EvaluationInsights;
+}
+
+export interface EvaluationRoleFit {
+  role: string;
+  fit_percent: number;
+  reasons: string[];
+}
+
+export interface EvaluationInsights {
+  score_reasons: Record<string, string[]>;
+  role_fits: EvaluationRoleFit[];
+  top_recommendation: string;
 }
 
 export interface Message {

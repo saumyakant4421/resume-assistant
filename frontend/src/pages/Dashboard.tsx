@@ -11,6 +11,7 @@ import {
 import ResumeUpload from "../components/ResumeUpload";
 import ResumeSummary from "../components/ResumeSummary";
 import ChatWindow from "../components/ChatWindow";
+import CareerPathPanel from "../components/CareerPathPanel";
 
 function sanitizeAssistantContent(content: string) {
   return content
@@ -29,6 +30,10 @@ export default function Dashboard() {
   const [error, setError] = useState<string | null>(null);
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [memory, setMemory] = useState<MemoryContext | null>(null);
+  const latestEvaluation = [...messages]
+    .reverse()
+    .find((message) => message.role === "assistant" && message.response?.evaluation)
+    ?.response?.evaluation ?? null;
 
   useEffect(() => {
     const syncBackendState = async () => {
@@ -156,7 +161,7 @@ export default function Dashboard() {
                 type="button"
                 onClick={handleReset}
                 disabled={isLoading}
-                className="app-button app-button--ghost"
+                className="app-button app-button--ghost app-button--compact"
               >
                 <RefreshCw size={14} />
                 Reset
@@ -185,13 +190,17 @@ export default function Dashboard() {
             </div>
           </section>
 
-          <section className="app-chat-stage">
-            <ChatWindow
-              messages={messages}
-              onSendMessage={handleSendMessage}
-              isLoading={isLoading}
-              resume={resume}
-            />
+          <section className="app-conversation-column">
+            <div className="app-chat-stage">
+              <ChatWindow
+                messages={messages}
+                onSendMessage={handleSendMessage}
+                isLoading={isLoading}
+                resume={resume}
+              />
+            </div>
+
+            <CareerPathPanel resume={resume} evaluation={latestEvaluation} />
           </section>
         </div>
       </main>

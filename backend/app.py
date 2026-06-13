@@ -24,6 +24,8 @@ def _get_allowed_origins() -> list[str]:
     origins.extend([
         "https://resume-assistant-git-main-saumya-kants-projects.vercel.app",
         "https://resume-assistant-i15qzkzv6-saumya-kants-projects.vercel.app",
+        "https://resume-assistant-saumya-kants-projects.vercel.app",
+        "https://resume-assistant-zeta.vercel.app"
     ])
 
     for env_name in ("FRONTEND_ORIGINS", "FRONTEND_URL"):
@@ -38,7 +40,11 @@ def _get_allowed_origins() -> list[str]:
 
     origins.extend([
         "http://localhost:5173",
+        "http://localhost:4173",
         "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:4173",
+        "http://127.0.0.1:3000",
     ])
 
     return list(dict.fromkeys(origins))
