@@ -20,6 +20,12 @@ def _get_allowed_origins() -> list[str]:
 
     origins: list[str] = []
 
+    # Explicit production origins for the Vercel deployments.
+    origins.extend([
+        "https://resume-assistant-git-main-saumya-kants-projects.vercel.app",
+        "https://resume-assistant-i15qzkzv6-saumya-kants-projects.vercel.app",
+    ])
+
     for env_name in ("FRONTEND_ORIGINS", "FRONTEND_URL"):
         raw_value = os.getenv(env_name, "")
         if not raw_value:
@@ -46,7 +52,7 @@ app = FastAPI(
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origins=_get_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
